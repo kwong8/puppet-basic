@@ -2,6 +2,7 @@ puppet-basic
 -----------------
 
 This module is configuring the basic settings of a server.
+It is made in such a way, that it integrates the common settings of all your servers in one module.
 
 * NTP service
 * SSH RSA authorized key
