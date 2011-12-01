@@ -28,7 +28,7 @@ node your_server_hostname {
       prefered_packages_list  => ["emacs"],                               # Default values: ["build-essential","tcpdump","traceroute","vim","vim-nox","sudo","strace","aptitude",],
       timezone                => "America/Montreal",                      # Your timezone location, default "America/Montreal"
       ntp_server              => ["ntp.ubuntu.com","ntp.dyndns.org",],    # Default ntp servers: ["time.nrc.ca","time.chu.nrc.ca",]
-      your_ssh_public_key     => "generally a long string of hex digits", # You desktop ssh public key, default empty
+      your_ssh_public_key     => "generally a long string of hex digits", # Your desktop ssh public key, default empty
       server_user             => "root";                                  # The user under who we will set your ssh public key, default "root"
   }
 
