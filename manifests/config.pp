@@ -34,22 +34,22 @@ class basic::config {
 
     exec { 
         "updatedb":
-        unless => "test -f /var/lib/mlocate/mlocate.db";
+            unless => "test -f /var/lib/mlocate/mlocate.db";
     }
 
     if $basic::your_ssh_public_key != "" {
         user {
             "${basic::server_user}":
-            ensure => present;
+                ensure => present;
         }
 
         ssh_authorized_key {
             "your_public_key":
-            ensure  => present,
-            key     => "${basic::your_ssh_public_key}",
-            user    => "${basic::server_user}",
-            type    => "ssh-rsa",
-            require => [User["${basic::server_user}"],];       
+                ensure  => present,
+                key     => "${basic::your_ssh_public_key}",
+                user    => "${basic::server_user}",
+                type    => "ssh-rsa",
+                require => [User["${basic::server_user}"],];       
         }
     }
 }
