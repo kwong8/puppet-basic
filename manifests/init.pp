@@ -17,7 +17,10 @@
 #
 class basic
 (
-  $prefered_packages_list = ["build-essential","tcpdump","traceroute","vim","vim-nox","sudo","strace","aptitude",],
+  $prefered_packages_list = ["vim-nox","ntpdate","strace","aptitude","tcpdump","sudo","debian-goodies",
+                             "nmon","git","git-core","dnsutils","traceroute","dos2unix","bash-completion",
+                             "nethogs","snmpd","build-essential","curl","apt-file","lsb-release","vnstat",
+                             "htop","dnstop",],
   $timezone = "America/Montreal",
   $ntp_server = ["time.nrc.ca","time.chu.nrc.ca",],
   $your_ssh_public_key = "",
