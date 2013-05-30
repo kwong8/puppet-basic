@@ -20,7 +20,7 @@ class basic::service {
   service {
     "ntp":
       enable      => true,
-			ensure      => "running",
+      ensure      => running,
       hasstatus   => true,
       hasrestart  => true;
   }
