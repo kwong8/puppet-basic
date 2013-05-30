@@ -16,40 +16,40 @@
 # limitations under the License.
 #
 class basic::config {
-  $config_ntp_servers = $basic::ntp_server
+    $config_ntp_servers = $basic::ntp_server
 
-  file { 
-    # Timezone setup
-    "/etc/localtime":
-			ensure => links,
-			target => "/usr/share/zoneinfo/${basic::timezone}";
-		
-		"/etc/timezone": 
-			content => "${basic::timezone}\n";
-			
-		"/etc/ntp.conf":
-		  ensure  => file,
-		  content => template("basic/ntp.conf.erb");
-  }
-  
-  exec { 
-    "updatedb":
-      unless => "test -f /var/lib/mlocate/mlocate.db";
-  }
-  
-  if $basic::your_ssh_public_key != "" {
-    user {
-      "${basic::server_user}":
-        ensure => present;
+    file { 
+        # Timezone setup
+        "/etc/localtime":
+            ensure => links,
+            target => "/usr/share/zoneinfo/${basic::timezone}";
+
+        "/etc/timezone": 
+            content => "${basic::timezone}\n";
+
+        "/etc/ntp.conf":
+            ensure  => file,
+            content => template("basic/ntp.conf.erb");
     }
-  
-    ssh_authorized_key {
-      "your_public_key":
-        ensure  => present,
-        key     => "${basic::your_ssh_public_key}",
-        user    => "${basic::server_user}",
-        type    => "ssh-rsa",
-        require => [User["${basic::server_user}"],];       
+
+    exec { 
+        "updatedb":
+        unless => "test -f /var/lib/mlocate/mlocate.db";
     }
-  }
+
+    if $basic::your_ssh_public_key != "" {
+        user {
+            "${basic::server_user}":
+            ensure => present;
+        }
+
+        ssh_authorized_key {
+            "your_public_key":
+            ensure  => present,
+            key     => "${basic::your_ssh_public_key}",
+            user    => "${basic::server_user}",
+            type    => "ssh-rsa",
+            require => [User["${basic::server_user}"],];       
+        }
+    }
 }
